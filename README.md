@@ -43,7 +43,6 @@
 #### For Authenticated Users
 - 💾 **Save Diagrams** – Persistent storage in PostgreSQL
 - 📚 **View History** – Access all previously created diagrams
-- 🎨 **Dark Mode** – Toggle between light and dark themes
 - 👤 **Profile Management** – Update user information
 - 🔒 **Secure Sessions** – JWT-based authentication
 
