@@ -113,6 +113,7 @@ flowchart TB
 ## 📊 Data Model (ER Diagram)
 
 ```mermaid
+direction LR
 erDiagram
     USER ||--o{ DIAGRAM : "creates"
     
