@@ -113,10 +113,11 @@ flowchart TB
 ## 📊 Data Model (ER Diagram)
 
 ```mermaid
-direction LR
 erDiagram
-    USER ||--o{ DIAGRAM : "creates"
-    
+    direction LR
+
+    USER ||--o{ DIAGRAM : creates
+
     USER {
         Long id PK
         String email UK
@@ -127,7 +128,7 @@ erDiagram
         LocalDateTime createdAt
         LocalDateTime updatedAt
     }
-    
+
     DIAGRAM {
         Long id PK
         Long userId FK
@@ -138,6 +139,7 @@ erDiagram
         LocalDateTime createdAt
         LocalDateTime updatedAt
     }
+
 ```
 
 ---
