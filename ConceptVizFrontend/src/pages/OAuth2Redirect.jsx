@@ -10,32 +10,36 @@ export default function OAuth2Redirect() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const token = searchParams.get('token');
-    const email = searchParams.get('email');
-    const name = searchParams.get('name');
-    const errorParam = searchParams.get('error');
+    const handleOAuth2Redirect = () => {
+      const token = searchParams.get('token');
+      const email = searchParams.get('email');
+      const name = searchParams.get('name');
+      const errorParam = searchParams.get('error');
 
-    if (errorParam) {
-      setError('Google login failed. Please try again.');
-      setTimeout(() => navigate('/'), 3000);
-      return;
-    }
+      if (errorParam) {
+        setError('Google login failed. Please try again.');
+        setTimeout(() => navigate('/'), 3000);
+        return;
+      }
 
-    if (token && email && name) {
-      try {
-        const user = { email, name };
-        authService.storeAuth(token, user);
-        setUser(user);
-        navigate('/');
-      } catch (err) {
-        console.error('Error storing auth:', err);
-        setError('Failed to complete login. Please try again.');
+      if (token && email && name) {
+        try {
+          const user = { email, name };
+          authService.storeAuth(token, user);
+          setUser(user);
+          navigate('/');
+        } catch (err) {
+          console.error('Error storing auth:', err);
+          setError('Failed to complete login. Please try again.');
+          setTimeout(() => navigate('/'), 3000);
+        }
+      } else {
+        setError('Invalid login response. Please try again.');
         setTimeout(() => navigate('/'), 3000);
       }
-    } else {
-      setError('Invalid login response. Please try again.');
-      setTimeout(() => navigate('/'), 3000);
-    }
+    };
+
+    handleOAuth2Redirect();
   }, [searchParams, navigate, setUser]);
 
   return (

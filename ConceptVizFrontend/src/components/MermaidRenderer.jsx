@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import mermaid from 'mermaid';
 
 mermaid.initialize({
@@ -15,15 +15,13 @@ mermaid.initialize({
 
 export default function MermaidRenderer({ code, className = '', onError }) {
   const containerRef = useRef(null);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (code && containerRef.current) {
       const renderDiagram = async () => {
         try {
           containerRef.current.innerHTML = '';
-          setError(null);
-          
+
           // Validate code before rendering
           if (!code.trim()) {
             throw new Error('Empty diagram code');
@@ -35,8 +33,7 @@ export default function MermaidRenderer({ code, className = '', onError }) {
         } catch (error) {
           console.error('Mermaid rendering error:', error);
           const errorMessage = error.message || 'Unknown error occurred';
-          setError(errorMessage);
-          
+
           if (onError) {
             onError(error);
           }

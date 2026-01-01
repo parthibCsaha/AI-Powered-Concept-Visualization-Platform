@@ -1,0 +1,26 @@
+# IDEs
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+**/target/
+**/build/
+**/dist/
+**/node_modules/
+
+# Logs
+*.log
+logs/
+
